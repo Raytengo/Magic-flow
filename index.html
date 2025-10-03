@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic Flow Prototype</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <style>
+    body { 
+      margin: 0; 
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    html, body {
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100vw;
+    }
+    .top-row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .video-panel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #webcam-container {
+      margin-bottom: 5px;
+      position: relative;
+      
+    }
+    #webcam-container video {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      border: 2px solid #333;
+      border-radius: 8px;
+      background: #000;
+    }
+    #webcam-container canvas {
+      display: block; /* display: none; set none will hide the camera view*/
+    }
+    .status-panel {
+      margin-top: 10px;
+      margin-left: 30px;
+      margin-right: 10px;
+      min-width: 260px;
+      background: white;
+      padding: 18px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .game-canvas {
+      border: 2px solid #333; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="top-row" id="top-row">
+      <div class="video-panel" id="video-panel">
+        <div id="webcam-container">
+          <canvas id="webcam-canvas" width="320" height="240"></canvas>
+          <!-- <div id="result-div"></div> the text in the bottom left corner, with left and right hand--> 
+        </div>
+      </div>
+      <div class="status-panel" id="status-panel">
+        <div>Left Hand Action: <span id="left-hand-action">Null</span></div>
+        <div>Right Hand Action: <span id="right-hand-action">Null</span></div>
+        <div>Current Status: <span id="current-status">Waiting for backend connection...</span></div>
+        <div>Game Mode: <span id="game-mode">VS AI</span></div>
+        <div id="ai-difficulty-container" style="margin-top: 10px;">
+          <label for="ai-difficulty">AI Difficulty: <span id="ai-difficulty-value">0.3</span></label>
+          <input type="range" id="ai-difficulty" min="0.1" max="0.9" step="0.1" value="0.3" 
+                 style="width: 100%; margin-top: 5px;">
+        </div>
+      </div>
+    </div>
+    <div style="margin: 10px 0 10px 0;">
+      <button id="fullscreen-btn" style="font-size: 20px; margin-right: 10px;">Full Screen</button>
+      <button id="mode-switch-btn" style="font-size: 20px;">Switch Mode: AI / PVP</button>
+    </div>
+    <div id="game-container">
+      
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+  <script src="hand_socket.js"></script>
+  <script src="config.js"></script>
+  <script src="sketch.js"></script>
+  <script src="player.js"></script>
+  <script src="spells.js"></script>
+
+</body>
+</html>
